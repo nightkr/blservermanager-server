@@ -1,0 +1,22 @@
+- extends "template_nocomments.html.haml"
+- load media
+
+- block head
+  %script{"type": "text/javascript", "src": "http://cdn.socket.io/stable/socket.io.js"}
+  %script{"type": "text/javascript"}
+    WEB_SOCKET_SWF_LOCATION = "http://cdn.socket.io/stable/WebSocketMain.swf";
+    key = "{{ key }}";
+  - include_media 'blmanager.js'
+  - include_media 'blmanager.css'
+
+-block content
+  #serverStatusContainer
+    The server is currently: <span id="serverStatus">not connected</span>.
+  #serverStartStopContainer
+    #serverStartContiner
+      %button#startButton{"disabled": True} Start
+      %button#stopButton{"disabled": True} Stop
+  #consoleContainer
+    %textarea#console.console{"readonly": True}
+    %br
+    %input#consoleInput.console
